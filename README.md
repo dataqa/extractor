@@ -4,7 +4,7 @@ App to extract structured fields into a spreadsheet from unstructured text
 &nbsp;
 
 <div align="center">
-    <img src="extractor.gif" width="800" align="center"/>
+    <img src="extractor.gif" width="600" align="center"/>
 </div>
 
 &nbsp;
