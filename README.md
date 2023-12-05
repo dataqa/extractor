@@ -1,7 +1,13 @@
 # extractor
 App to extract structured fields into a spreadsheet from unstructured text
 
-![](https://github.com/dataqa/extractor/extractor.gif)
+&nbsp;
+
+<div align="center">
+    <img src="extractor.gif" width="600" align="center"/>
+</div>
+
+&nbsp;
 
 ## Usage
 Install app via poetry: `poetry install`
