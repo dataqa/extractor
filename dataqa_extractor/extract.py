@@ -7,9 +7,14 @@ from instructor import OpenAISchema
 import pandas as pd
 from pydantic import create_model
 from pydantic.fields import FieldInfo
+import re
 import streamlit as st
 
 from constants import *
+
+
+def clean_variable_string(var_str):
+    return re.sub('\W|^(?=\d)', '_', var_str)
 
 
 def get_open_ai_client(openai_api_key):
@@ -26,7 +31,8 @@ def define_extractor_class(fields, extraction_summary):
             selected_type = Optional[int]
         else:
             selected_type = Optional[str]
-        args[fields[i]["name"]] = (
+        clean_name = clean_variable_string(fields[i]["name"])
+        args[clean_name] = (
             selected_type,
             FieldInfo(description=fields[i]["desc"]),
         )
