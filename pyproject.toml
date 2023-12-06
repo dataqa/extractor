@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dataqa-extractor"
-version = "0.1.2"
+version = "0.1.3"
 description = "No-code data extractor"
 authors = ["Maria <maria@dataqa.ai>", "Stuart <stuart@dataqa.ai>"]
 readme = "README.md"
