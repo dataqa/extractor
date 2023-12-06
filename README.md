@@ -9,6 +9,10 @@ Extract structured fields into a spreadsheet from unstructured text
 
 &nbsp;
 
+## Streamlit app
+
+This app is hosted in the Streamlit cloud: https://data-extract.streamlit.app/
+
 ## Usage
 
 This package uses the OpenAI API, so you need a valid API key before you start.
