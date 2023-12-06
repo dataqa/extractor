@@ -1,5 +1,5 @@
-# DataQA extractor[README.md](README.md)
-App to extract structured fields into a spreadsheet from unstructured text
+# DataQA extractor
+Extract structured fields into a spreadsheet from unstructured text
 
 &nbsp;
 
