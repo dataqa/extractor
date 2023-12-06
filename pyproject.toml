@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "extractor"
+name = "dataqa-extractor"
 version = "0.1.0"
 description = "No-code data extractor"
 authors = ["Maria <maria@dataqa.ai>", "Stuart <stuart@dataqa.ai>"]
@@ -8,12 +8,14 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = ">=3.9,<3.9.7 || >3.9.7,<4.0" # needed for streamlit
 pandas = "2.1.3"
-python-dotenv = "1.0.0"
 pydantic = "2.4.2"
 openai = "0.28.0" # https://stackoverflow.com/questions/77540822)
 instructor = "0.2.11" # last version to depend on openai < 1.0.0
 streamlit = "1.29.0"
 
+[tool.poetry.scripts]
+dataqa-extract = "dataqa_extractor.run:run_app"
+
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
