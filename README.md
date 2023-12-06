@@ -4,7 +4,7 @@ Extract structured fields into a spreadsheet from unstructured text
 &nbsp;
 
 <div align="center">
-    <img src="https://github.com/dataqa/extractor/blob/main/extractor.gif" width="600" align="center"/>
+    <img src="https://github.com/dataqa/extractor/blob/main/extractor.gif?raw=True" width="600" align="center"/>
 </div>
 
 &nbsp;
