@@ -12,9 +12,9 @@ import streamlit as st
 from constants import *
 
 
-def get_open_ai_client():
+def get_open_ai_client(openai_api_key):
     import openai as client
-    client.api_key = OPENAI_API_KEY
+    client.api_key = openai_api_key
     return client
 
 
@@ -36,9 +36,9 @@ def define_extractor_class(fields, extraction_summary):
     return ExtractedDataClass
 
 
-def process_file(uploaded_file, output_file_path, fields, extraction_summary):
+def process_file(openai_api_key, uploaded_file, output_file_path, fields, extraction_summary):
     ExtractedDataClass = define_extractor_class(fields, extraction_summary)
-    client = get_open_ai_client()
+    client = get_open_ai_client(openai_api_key)
     count_extractions = Counter()
     if uploaded_file is not None:
         stringio = io.StringIO(uploaded_file.getvalue().decode("utf-8"))
@@ -95,7 +95,7 @@ def process_file(uploaded_file, output_file_path, fields, extraction_summary):
                         output_line.append(value)
                     writer.writerow(output_line)
 
-    return {"total_lines": line_ind,
+    return {"total_lines": line_ind + 1,
             "total_cost": total_cost,
             "example": example,
             "total_extractions": count_extractions}
@@ -116,6 +116,7 @@ def streamlit_app():
 
         st.write("We recommend running on a sample first to get an estimate of quality and cost of extraction.")
 
+        openai_api_key = st.text_input("Enter a valid OpenAI API key:", type="password")
         uploaded_file = st.file_uploader("Choose a csv file", accept_multiple_files=False, type="csv")
 
         output_folder_path = st.text_input(
@@ -161,7 +162,11 @@ def streamlit_app():
                         st.warning("The name, type and description of a field need to be filled.")
                     else:
                         output_file_path = f"{output_folder_path}/extracted_data.csv"
-                        result = process_file(uploaded_file, output_file_path, fields, extraction_summary)
+                        result = process_file(openai_api_key,
+                                              uploaded_file,
+                                              output_file_path,
+                                              fields,
+                                              extraction_summary)
                         with st.container(border=True):
                             st.subheader("Results")
                             if result["total_cost"] > 0:
